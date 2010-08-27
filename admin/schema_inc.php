@@ -1,4 +1,21 @@
 <?php
+
+global $gBitSystem;
+
+$gBitSystem->registerPackageInfo( BOARDS_PKG_NAME, array(
+	'description' => "Highly integrated message boards package.",
+	'license' => '<a href="http://www.gnu.org/licenses/licenses.html#LGPL">LGPL</a>',
+) );
+
+// Requirements
+$gBitSystem->registerRequirements( BOARDS_PKG_NAME, array(
+	'liberty' => array( 'min' => '2.1.4' ),
+));
+
+// Install process
+global $gBitInstaller;
+if( is_object( $gBitInstaller ) ){
+
 $tables = array(
 	'boards_posts' => "
 		comment_id I4 PRIMARY,
@@ -44,16 +61,9 @@ $tables = array(
 	"
 );
 
-global $gBitInstaller;
-
 foreach( array_keys( $tables ) AS $tableName ) {
 	$gBitInstaller->registerSchemaTable( BOARDS_PKG_NAME, $tableName, $tables[$tableName] );
 }
-
-$gBitInstaller->registerPackageInfo( BOARDS_PKG_NAME, array(
-	'description' => "Highly integrated message boards package.",
-	'license' => '<a href="http://www.gnu.org/licenses/licenses.html#LGPL">LGPL</a>',
-) );
 
 // ### Indexes
 $indices = array(
@@ -93,7 +103,4 @@ $gBitInstaller->registerContentObjects( BOARDS_PKG_NAME, array(
 	'BitBoard'=>BOARDS_PKG_PATH.'BitBoard.php',
 ));
 
-// Requirements
-$gBitInstaller->registerRequirements( BOARDS_PKG_NAME, array(
-	'liberty' => array( 'min' => '2.1.4' ),
-));
+}
