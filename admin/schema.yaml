@@ -1,0 +1,94 @@
+---
+boards: 
+  version: 1.0.1
+  required: false
+  requirements: 
+    liberty: 
+      min: 2.1.4
+  description: >
+    Highly integrated message boards package.
+  license: 
+    name: LGPL
+    description: Licensed under the GNU LESSER GENERAL PUBLIC LICENSE.
+    url: http://www.gnu.org/copyleft/lesser.html 
+  homeable: false
+  tables: 
+    boards_posts: |
+      
+      comment_id I4 PRIMARY,
+      is_approved I1 NOTNULL DEFAULT(0),
+      is_warned I1 NOTNULL DEFAULT(0),
+      warned_message X,
+      migrate_post_id INT
+      CONSTRAINT ', CONSTRAINT `boards_posts_comment_ref` FOREIGN KEY (`comment_id`) REFERENCES `liberty_comments` (`comment_id`)'
+      
+    boards_topics: |
+      
+      parent_id I4 PRIMARY,
+      is_locked I1 NOTNULL DEFAULT(0),
+      is_moved I4 NOTNULL DEFAULT(0),
+      is_sticky I1 NOTNULL DEFAULT(0),
+      migrate_topic_id INT
+      CONSTRAINT ', CONSTRAINT `boards_topics_parent_ref` FOREIGN KEY (`parent_id`) REFERENCES `liberty_content` (`content_id`)'
+      
+    boards_sections: |
+      
+      section_id I4 PRIMARY,
+      section_title C(255)
+      
+    boards: |
+      
+      board_id I4 PRIMARY,
+      content_id I4 NOTNULL,
+      section_id I4,
+      pos I4,
+      migrate_board_id INT
+      CONSTRAINT ', CONSTRAINT `boards_content_ref` FOREIGN KEY (`content_id`) REFERENCES `liberty_content` (`content_id`)
+      , CONSTRAINT `boards_section_ref` FOREIGN KEY (`section_id`) REFERENCES `boards_sections` (`section_id`)'
+      
+    boards_map: |
+      
+      board_content_id I4 NOTNULL,
+      topic_content_id I4 PRIMARY
+      CONSTRAINT ', CONSTRAINT `boards_topics_boards_ref` FOREIGN KEY (`board_content_id`) REFERENCES `liberty_content` (`content_id`)
+      , CONSTRAINT `boards_topics_related_ref` FOREIGN KEY (`topic_content_id`) REFERENCES `liberty_content` (`content_id`)'
+      
+    boards_tracking: |
+      
+      user_id I4 NOTNULL,
+      topic_id C(10),
+      track_date I4 NOTNULL DEFAULT(0),
+      notify I1 NOTNULL DEFAULT(0),
+      notify_date I4 NOTNULL DEFAULT(0)
+      
+  indexes: 
+    boards_id_idx: 
+      table: boards
+      cols: board_id
+      opts: 
+  sequences: 
+    boards_board_id_seq: 
+      start: 1
+    boards_sections_id_seq: 
+      start: 1
+  permissions: 
+    p_boards_admin: 
+      description: Can admin message boards
+      level: admin
+    p_boards_create: 
+      description: Can create a message board
+      level: editors
+    p_boards_post_update: 
+      description: Can update any post
+      level: editors
+    p_boards_update: 
+      description: Can update any message board
+      level: editors
+    p_boards_read: 
+      description: Can read message boards
+      level: basic
+    p_boards_remove: 
+      description: Can delete message boards
+      level: editors
+  preferences: 
+    boards_thread_track: 'y'
