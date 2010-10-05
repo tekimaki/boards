@@ -92,3 +92,5 @@ boards:
       level: editors
   preferences: 
     boards_thread_track: 'y'
+  contenttypes:
+    BitBoard: BitBoard.php
