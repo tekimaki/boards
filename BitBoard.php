@@ -766,7 +766,7 @@ function boards_content_edit ( $pContent, $pParamHash ) {
 	if( !$pContent->isContentType( BITBOARDTOPIC_CONTENT_TYPE_GUID ) ) {
 		if( $pContent->isValid() ) {
 			$gBitSmarty->assign( 'boardInfo', BitBoard::getLinkedBoard( $pContent->mContentId ) );
-		} else {
+		} elseif( !empty( $pParamHash['linked_board_cid'] ) ){
 			$boardInfo['board_content_id'] = $pParamHash['linked_board_cid'];
 			$gBitSmarty->assign( 'boardInfo', $boardInfo );
 		}
