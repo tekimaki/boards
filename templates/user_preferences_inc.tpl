@@ -24,7 +24,7 @@
 					{/forminput}
 				</div>
 			{/foreach}
-			<div class="row submit">
+			<div class="buttonHolder row submit">
 				<input type="submit" name="boards[submit]" value="{tr}Change Settings{/tr}" />
 			</div>
 		{/form}
@@ -34,7 +34,7 @@
 			<input type="hidden" name="view_user" value="{$view_user}" />
 			{formfeedback warning=$error}
 			{textarea gContent=$signatureContent name=bitboarduprefs[edit]" rows=4}{$editUser->getPreference('signature_content_data')}{/textarea}
-			<div class="row submit">
+			<div class="buttonHolder row submit">
 				<input type="submit" name="preview" value="{tr}Preview{/tr}" /> <input type="submit" name="save_bitboarduprefs" value="{tr}Save{/tr}" />
 			</div>
 		{/form}

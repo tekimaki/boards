@@ -16,7 +16,7 @@
 			{/forminput}
 		</div>
 
-		<div class="row submit">
+		<div class="buttonHolder row submit">
 			<input type="submit" name="homeTabSubmit" value="{tr}Change preferences{/tr}" />
 		</div>
 	{/legend}
@@ -121,7 +121,7 @@
 			{/forminput}
 		</div>
 	{/legend}
-	<div class="row submit">
+	<div class="buttonHolder row submit">
 		<input type="submit" name="listTabSubmit" value="{tr}Change preferences{/tr}" />
 	</div>
 {/form}

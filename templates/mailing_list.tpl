@@ -117,7 +117,7 @@
 			{$board->getPreference('boards_mailing_list')}@{$gBitSystem->getConfig('boards_email_host',$gBitSystem->getConfig('kernel_server_name'))}
 		{/forminput}
 	</div>
-	<div class="row submit">
+	<div class="buttonHolder row submit">
 		{forminput}
 			<input type="submit" name="delete_list" value="Delete List" />
 		{/forminput}
@@ -147,7 +147,7 @@
 			{formhelp note="This is the password used to administer the mailing list."}
 		{/forminput}
 	</div>
-	<div class="row submit">
+	<div class="buttonHolder row submit">
 		{forminput}
 			<input type="submit" name="create_list" value="Create List" />
 		{/forminput}

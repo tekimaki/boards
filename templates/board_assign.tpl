@@ -35,7 +35,7 @@
 					{/forminput}
 				</div>
 
-				<div class="row submit">
+				<div class="buttonHolder row submit">
 					<input type="submit" value="{tr}Assign Content to Board{/tr}" name="action" />
 				</div>
 			{/form}
@@ -84,7 +84,7 @@
 						{/foreach}
 					</table>
 
-					<div class="row submit">
+					<div class="buttonHolder row submit">
 						<input type="submit" value="{tr}Remove{/tr}" name="action" />
 					</div>
 				{/form}

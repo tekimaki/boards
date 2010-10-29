@@ -35,7 +35,7 @@
 					{/capture}
 					{textarea noformat=1 label="Comment" id="commentpost" name="comment_data" rows="6"}{$postComment.data}{/textarea}
 
-					<div class="row submit">
+					<div class="buttonHolder row submit">
 						<input type="submit" name="post_comment_preview" value="{tr}Preview{/tr}"/>&nbsp;
 						<input type="submit" name="post_comment_submit" value="{tr}Post{/tr}"/>&nbsp;
 						<input type="submit" name="post_comment_cancel" value="{tr}Cancel{/tr}"/>

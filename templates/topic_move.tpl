@@ -26,7 +26,7 @@
 					</select>
 				{/forminput}
 			</div>
-			<div class="row submit">
+			<div class="buttonHolder row submit">
 				<input type="submit" name="move_thread" value="{tr}Move Topic{/tr}" />
 			</div>
 		{/form}
